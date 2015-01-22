@@ -186,6 +186,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['title'] = $this->_apply_text_filters(apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title']));
 		$instance['phone'] = apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance);
 		$instance['email'] = apply_filters($this->get_widget_slug() . '_email', $instance['email'], $args, $instance);
+		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
 
@@ -205,6 +206,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['phone'] = strip_tags($new_instance['phone']);
 		$instance['email'] = strip_tags($new_instance['email']);
+		$instance['label_length'] = strip_tags($new_instance['label_length']);
         return $instance;
     }
 
@@ -270,6 +272,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'title' => '',
 			'phone' => '',
 			'email' => '',
+			'label_length' => '',
 			'template' => 'default'
 		);
 		return $defaults;
@@ -303,6 +306,50 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function the_title(&$instance)
 	{
 		echo $instance['title'];
+	}
+
+	/**
+	 * Check widget show labels
+	 *
+     * @since  1.0.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_label(&$instance)
+	{
+		return (!empty($instance['label_length']) && $instance['label_length'] != 'none');
+	}
+
+	/**
+	 * Check widget label length
+	 *
+     * @since  1.0.0
+     *
+     * @param  array  $instance 
+     * @param  string $length 
+	 * @return bool
+	 */
+	public function is_label_length(&$instance, $length)
+	{
+		return ($length == $instance['label_length']);
+	}
+
+	/**
+	 * Retrieve available widget label length list
+	 *
+     * @since  1.0.0
+     *
+     * @return array - with label_length[name,label]
+	 */
+	public function get_label_length_list()
+	{
+		$label_length_list = array(
+			array('name' => 'short', 'label' => __('short', $this->get_widget_text_domain())),
+			array('name' => 'long', 'label' => __('long', $this->get_widget_text_domain())),
+			array('name' => 'none', 'label' => __('none', $this->get_widget_text_domain())));
+		$label_length_list = apply_filters($this->get_widget_slug() . '_label_length_list', $label_length_list);
+		return $label_length_list;
 	}
 
 	/**
@@ -444,6 +491,14 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/* Helper Functions
 	/*--------------------------------------------------*/
 
+	/**
+     * Apply internal text filters
+     *
+     * @since  1.0.0
+     *
+     * @param string
+     * @return string
+     */
 	protected function _apply_text_filters($input)
 	{
 		if (!empty($input))

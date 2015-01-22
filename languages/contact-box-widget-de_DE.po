@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enquiry Box Widget 1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/enquiry-box-widget\n"
-"POT-Creation-Date: 2015-01-22 12:32+0100\n"
-"PO-Revision-Date: 2015-01-22 12:36+0100\n"
+"POT-Creation-Date: 2015-01-22 14:59+0100\n"
+"PO-Revision-Date: 2015-01-22 15:01+0100\n"
 "Last-Translator: Wilfried Reiter <wilfried.reiter@devpoint.at>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Poedit 1.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c\n"
 "X-Poedit-SearchPath-0: ./views\n"
 "X-Poedit-SearchPath-1: .\n"
 
@@ -31,21 +31,37 @@ msgstr "Telefonnummer:"
 msgid "Email address:"
 msgstr "Email-Adresse:"
 
-#: views/widget-admin.php:26
+#: views/widget-admin.php:24
+msgid "Label display length:"
+msgstr "Darstellung der Bezeichner:"
+
+#: views/widget-admin.php:35
 msgid "Template:"
 msgstr "Template:"
 
-#: views/widget-admin.php:29
+#: views/widget-admin.php:38
 msgid "default"
 msgstr "default"
 
-#: views/widget.php:18
-msgid "Phone: "
-msgstr "Telefon: "
+#: views/widget.php:19
+msgctxt "short"
+msgid "Phone:"
+msgstr "Tel:"
 
-#: views/widget.php:22
-msgid "Email: "
-msgstr "Email: "
+#: views/widget.php:21
+msgctxt "long"
+msgid "Phone:"
+msgstr "Telefon:"
+
+#: views/widget.php:27
+msgctxt "short"
+msgid "Email:"
+msgstr "Email:"
+
+#: views/widget.php:29
+msgctxt "long"
+msgid "Email:"
+msgstr "Email:"
 
 #: contact-box-widget.php:116
 msgid "Contact Box"
@@ -54,6 +70,27 @@ msgstr "Kontakt Box"
 #: contact-box-widget.php:118
 msgid "Contact box with Phone number and Email."
 msgstr "Kontakt Box mit Telefonnummer und Email."
+
+#: contact-box-widget.php:348
+msgid "short"
+msgstr "kurz"
+
+#: contact-box-widget.php:349
+msgid "long"
+msgstr "lang"
+
+#: contact-box-widget.php:350
+msgid "none"
+msgstr "ohne"
+
+#~ msgid "Label length:"
+#~ msgstr "Bezeichnerlänge:"
+
+#~ msgid "Phone: "
+#~ msgstr "Telefon: "
+
+#~ msgid "Email: "
+#~ msgstr "Email: "
 
 #~ msgid "Label 'Submit':"
 #~ msgstr "Label 'Submit':"
