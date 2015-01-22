@@ -375,7 +375,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function the_phone_link(&$instance)
 	{
-		echo $instance['phone'];
+		$phone_link = str_replace(array('(0)','/','-',' '), '', $instance['phone']);
+		echo $phone_link;
 	}
 
 	/**
