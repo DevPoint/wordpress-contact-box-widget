@@ -1,0 +1,122 @@
+# Copyright (C) 2015 Enquiry Box Widget
+# This file is distributed under the same license as the Enquiry Box Widget package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Enquiry Box Widget 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/enquiry-box-widget\n"
+"POT-Creation-Date: 2015-01-22 12:32+0100\n"
+"PO-Revision-Date: 2015-01-22 12:36+0100\n"
+"Last-Translator: Wilfried Reiter <wilfried.reiter@devpoint.at>\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ./views\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: views/widget-admin.php:12
+msgid "Title:"
+msgstr "Titel:"
+
+#: views/widget-admin.php:16
+msgid "Phone number:"
+msgstr "Telefonnummer:"
+
+#: views/widget-admin.php:20
+msgid "Email address:"
+msgstr "Email-Adresse:"
+
+#: views/widget-admin.php:26
+msgid "Template:"
+msgstr "Template:"
+
+#: views/widget-admin.php:29
+msgid "default"
+msgstr "default"
+
+#: views/widget.php:18
+msgid "Phone: "
+msgstr "Telefon: "
+
+#: views/widget.php:22
+msgid "Email: "
+msgstr "Email: "
+
+#: contact-box-widget.php:116
+msgid "Contact Box"
+msgstr "Kontakt Box"
+
+#: contact-box-widget.php:118
+msgid "Contact box with Phone number and Email."
+msgstr "Kontakt Box mit Telefonnummer und Email."
+
+#~ msgid "Label 'Submit':"
+#~ msgstr "Label 'Submit':"
+
+#~ msgid "Date format:"
+#~ msgstr "Date format:"
+
+#~ msgid "Internal date format:"
+#~ msgstr "Internal date format:"
+
+#~ msgid "Target link:"
+#~ msgstr "Target link:"
+
+#~ msgid "Arrival"
+#~ msgstr "Arrival"
+
+#~ msgid "Departure"
+#~ msgstr "Departure"
+
+#~ msgid "1 Adult"
+#~ msgstr "1 Adult"
+
+#~ msgid "2 Adults"
+#~ msgstr "2 Adults"
+
+#~ msgid "3 Adults"
+#~ msgstr "3 Adults"
+
+#~ msgid "4 Adults"
+#~ msgstr "4 Adults"
+
+#~ msgid "5 Adults"
+#~ msgstr "5 Adults"
+
+#~ msgid "6 Adults"
+#~ msgstr "6 Adults"
+
+#~ msgid "Enquiry Box"
+#~ msgstr "Enquiry Box"
+
+#~ msgid "Enquiry box with Datepicker."
+#~ msgstr "Enquiry box with Datepickerr."
+
+#~ msgid "Submitted date format:"
+#~ msgstr "Submitted date format:"
+
+#~ msgid "Sumitted date format:"
+#~ msgstr "Sumitted date format:"
+
+#~ msgid "Permalink:"
+#~ msgstr "Permalink:"
+
+#~ msgid "Label \"Submit\":"
+#~ msgstr "Label \"Submit\":"
+
+#~ msgid "Submit label:"
+#~ msgstr "Submit label:"
+
+#~ msgid "Arrival label:"
+#~ msgstr "Arrival label:"
+
+#~ msgid "Departure label:"
+#~ msgstr "Departure label:"
+
+#~ msgid "Adults label:"
+#~ msgstr "Adults label:"
