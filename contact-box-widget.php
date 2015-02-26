@@ -14,7 +14,7 @@
  * Plugin Name:       Contact Box Widget
  * Plugin URI:        http://wordpress.org/extend/plugins/post-teaser-widget
  * Description:       An advanced posts display widget with many options: get posts by post type and taxonomy & term or by post ID; sorting & ordering; feature images; custom templates and more.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            willriderat
  * Author URI:        http://devpoint.at
  * Text Domain:       contact-box-widget
@@ -68,7 +68,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
      *
      * @var      string
      */
-    protected $plugin_version = '1.0.0';
+    protected $plugin_version = '1.1.0';
 
     /**
      * Unique identifier for your widget.
@@ -93,6 +93,15 @@ class DPT_Contact_Box_Widget extends WP_Widget {
      * @var      string
      */
     protected $widget_text_domain = 'contact-box-widget';
+    
+    /**
+     * Map with features the widget should make use of
+     *
+     * @since    1.1.0
+     *
+     * @var      array
+     */
+    protected $feature_map = array();
     
 	/*--------------------------------------------------*/
 	/* Constructor
@@ -120,6 +129,9 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			)
 		);
 		
+		// Call widget initialization
+		add_action('init', array($this, 'init'));
+	
 		// Setup the default variables after wp is loaded
 		add_action('wp_loaded', array($this, 'setup_defaults'));
 
@@ -184,8 +196,12 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function widget($args, $instance) 
 	{
 		$instance['title'] = $this->_apply_text_filters(apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title']));
-		$instance['phone'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance));
+		$instance['phone'] = $this->_apply_phone_filters(apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance));
+		$instance['phone_link'] = $this->_apply_phone_link_filters(apply_filters($this->get_widget_slug() . '_phone_link', $instance['phone'], $args, $instance));
 		$instance['email'] = apply_filters($this->get_widget_slug() . '_email', $instance['email'], $args, $instance);
+		$instance['email_link'] = apply_filters($this->get_widget_slug() . '_email_link', $instance['email'], $args, $instance);
+		$instance['facebook'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_facebook', $instance['facebook'], $args, $instance));
+		$instance['facebook_link'] = apply_filters($this->get_widget_slug() . '_facebook_link', $instance['_facebook_link'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
@@ -206,6 +222,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['phone'] = strip_tags($new_instance['phone']);
 		$instance['email'] = strip_tags($new_instance['email']);
+		$instance['facebook'] = strip_tags($new_instance['facebook']);
+		$instance['facebook_link'] = strip_tags($new_instance['facebook_link']);
 		$instance['label_length'] = strip_tags($new_instance['label_length']);
         return $instance;
     }
@@ -272,6 +290,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'title' => '',
 			'phone' => '',
 			'email' => '',
+			'facebook' => '',
+			'facebook_link' => '',
 			'label_length' => '',
 			'template' => 'default'
 		);
@@ -281,6 +301,19 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Template functions
 	/*--------------------------------------------------*/
+
+	/**
+	 * Should a certain feature being used
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_feature($feature)
+	{
+		return (!empty($this->feature_map[$feature]));
+	}
 
 	/**
 	 * Check for widget title
@@ -353,6 +386,19 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Should widget phone being used
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_phone(&$instance)
+	{
+		return (!empty($this->feature_map['phone']) && !empty($instance['phone']));
+	}
+
+	/**
 	 * Print widget phone
 	 *
      * @since  1.0.0
@@ -375,8 +421,20 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function the_phone_link(&$instance)
 	{
-		$phone_link = str_replace(array('(0)','/','-',' ','&nbsp;'), '', $instance['phone']);
-		echo $phone_link;
+		echo $instance['phone_link'];
+	}
+
+	/**
+	 * Should widget email being used
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_email(&$instance)
+	{
+		return (!empty($this->feature_map['email']) && !empty($instance['email']));
 	}
 
 	/**
@@ -402,7 +460,47 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function the_email_link(&$instance)
 	{
-		echo $instance['email'];
+		echo $instance['email_link'];
+	}
+
+	/**
+	 * Should widget facebook being used
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_facebook(&$instance)
+	{
+		//return (!empty($this->feature_map['facebook']) && !empty($instance['facebook']));
+		return true;
+	}
+
+	/**
+	 * Print widget facebook
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_facebook(&$instance)
+	{
+		echo $instance['facebook'];
+	}
+
+	/**
+	 * Print widget facebook link
+	 *
+     * @since  1.1.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_facebook_link(&$instance)
+	{
+		echo $instance['facebook_link'];
 	}
 
 	/**
@@ -436,6 +534,22 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/*--------------------------------------------------*/
 	/* Public Functions
 	/*--------------------------------------------------*/
+
+	/**
+	 * Initialize the Widget
+	 *
+     * @since  1.1.0
+     *
+     * @return void
+ 	 */
+	public function init() 
+	{
+		$this->feature_map = apply_filters($this->get_widget_slug() . '_feature_map', array(
+			'phone' => true,
+			'email' => true,
+			'facebook' => true)
+		);
+	}
 
 	/**
 	 * Registers and enqueues admin-specific styles.
@@ -505,6 +619,40 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		if (!empty($input))
 		{
 			$input = str_replace(array('[-]','[ ]'), array('&shy;','&nbsp;'), $input);
+		}
+		return $input;
+	}
+
+	/**
+     * Apply internal phone filters
+     *
+     * @since  1.1.0
+     *
+     * @param string
+     * @return string
+     */
+	protected function _apply_phone_filters($input)
+	{
+		if (!empty($input))
+		{
+			$input = str_replace(array('[-]','[ ]'), array('&shy;','&nbsp;'), $input);
+		}
+		return $input;
+	}
+
+	/**
+     * Apply internal phone link filters
+     *
+     * @since  1.1.0
+     *
+     * @param string
+     * @return string
+     */
+	protected function _apply_phone_link_filters($input)
+	{
+		if (!empty($input))
+		{
+			$input = str_replace(array('(0)','/','-',' ','[-]','[ ]'), '', $input);
 		}
 		return $input;
 	}

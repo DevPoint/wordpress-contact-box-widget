@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Enquiry Box Widget package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Enquiry Box Widget 1.0\n"
+"Project-Id-Version: Enquiry Box Widget 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/enquiry-box-widget\n"
-"POT-Creation-Date: 2015-01-22 15:00+0100\n"
-"PO-Revision-Date: 2015-01-22 15:00+0100\n"
+"POT-Creation-Date: 2015-02-26 10:49+0100\n"
+"PO-Revision-Date: 2015-02-26 10:49+0100\n"
 "Last-Translator: Wilfried Reiter <wilfried.reiter@devpoint.at>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -23,65 +23,89 @@ msgstr ""
 msgid "Title:"
 msgstr "Title:"
 
-#: views/widget-admin.php:16
+#: views/widget-admin.php:17
 msgid "Phone number:"
 msgstr "Phone number:"
 
-#: views/widget-admin.php:20
+#: views/widget-admin.php:23
 msgid "Email address:"
 msgstr "Email address:"
 
-#: views/widget-admin.php:24
+#: views/widget-admin.php:29
+msgid "Facebook link text:"
+msgstr "Facebook link text:"
+
+#: views/widget-admin.php:33
+msgid "Facebook URL:"
+msgstr "Facebook URL:"
+
+#: views/widget-admin.php:38
 msgid "Label display length:"
 msgstr "Label display length:"
 
-#: views/widget-admin.php:35
+#: views/widget-admin.php:49
 msgid "Template:"
 msgstr "Template:"
 
-#: views/widget-admin.php:38
+#: views/widget-admin.php:52
 msgid "default"
 msgstr "default"
 
-#: views/widget.php:19
+#: views/widget.php:20
 msgctxt "short"
 msgid "Phone:"
 msgstr "Phone:"
 
-#: views/widget.php:21
+#: views/widget.php:22
 msgctxt "long"
 msgid "Phone:"
 msgstr "Phone:"
 
-#: views/widget.php:27
+#: views/widget.php:30
 msgctxt "short"
 msgid "Email:"
 msgstr "Email:"
 
-#: views/widget.php:29
+#: views/widget.php:32
 msgctxt "long"
 msgid "Email:"
 msgstr "Email:"
 
-#: contact-box-widget.php:116
+#: views/widget.php:40
+msgctxt "short"
+msgid "Facebook:"
+msgstr "FB:"
+
+#: views/widget.php:42
+msgctxt "long"
+msgid "Facebook:"
+msgstr "Facebook:"
+
+#: contact-box-widget.php:125
 msgid "Contact Box"
 msgstr "Contact Box"
 
-#: contact-box-widget.php:118
+#: contact-box-widget.php:127
 msgid "Contact box with Phone number and Email."
 msgstr "Contact box with Phone number and Email."
 
-#: contact-box-widget.php:348
+#: contact-box-widget.php:381
 msgid "short"
 msgstr "short"
 
-#: contact-box-widget.php:349
+#: contact-box-widget.php:382
 msgid "long"
 msgstr "long"
 
-#: contact-box-widget.php:350
+#: contact-box-widget.php:383
 msgid "none"
 msgstr "none"
+
+#~ msgid "Facebook text:"
+#~ msgstr "Facebook text:"
+
+#~ msgid "Facebook Text:"
+#~ msgstr "Facebook Text:"
 
 #~ msgid "Label length:"
 #~ msgstr "Label length:"

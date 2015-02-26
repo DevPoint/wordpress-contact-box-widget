@@ -12,14 +12,28 @@ if ( !defined( 'ABSPATH' ) )
 	<label for="<?php echo $this->get_field_id('title');?>"><?php _e('Title:', $this->get_widget_text_domain()); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo $instance['title'];?>" />
 </p>
+<?php if ($this->has_feature('phone')) : ?>
 <p>
 	<label for="<?php echo $this->get_field_id('phone');?>"><?php _e('Phone number:', $this->get_widget_text_domain()); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id('phone');?>" name="<?php echo $this->get_field_name('phone');?>" type="text" value="<?php echo $instance['phone'];?>" />
 </p>
+<?php endif; ?>
+<?php if ($this->has_feature('email')) : ?>
 <p>
 	<label for="<?php echo $this->get_field_id('email');?>"><?php _e('Email address:', $this->get_widget_text_domain()); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id('email');?>" name="<?php echo $this->get_field_name('email');?>" type="text" value="<?php echo $instance['email'];?>" />
 </p>
+<?php endif; ?>
+<?php if ($this->has_feature('facebook')) : ?>
+<p>
+	<label for="<?php echo $this->get_field_id('facebook');?>"><?php _e('Facebook link text:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('facebook');?>" name="<?php echo $this->get_field_name('facebook');?>" type="text" value="<?php echo $instance['facebook'];?>" />
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('facebook_link');?>"><?php _e('Facebook URL:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('facebook_link');?>" name="<?php echo $this->get_field_name('facebook_link');?>" type="text" value="<?php echo $instance['facebook_link'];?>" />
+</p>
+<?php endif; ?>
 <p>
 	<label for="<?php echo $this->get_field_id('label_length');?>"><?php _e('Label display length:', $this->get_widget_text_domain()); ?></label> 
 	<select class="widefat" id="<?php echo $this->get_field_id('label_length');?>" name="<?php echo $this->get_field_name('label_length');?>">
