@@ -184,7 +184,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function widget($args, $instance) 
 	{
 		$instance['title'] = $this->_apply_text_filters(apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title']));
-		$instance['phone'] = apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance);
+		$instance['phone'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance));
 		$instance['email'] = apply_filters($this->get_widget_slug() . '_email', $instance['email'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
@@ -375,7 +375,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function the_phone_link(&$instance)
 	{
-		$phone_link = str_replace(array('(0)','/','-',' '), '', $instance['phone']);
+		$phone_link = str_replace(array('(0)','/','-',' ','&nbsp;'), '', $instance['phone']);
 		echo $phone_link;
 	}
 
@@ -504,7 +504,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	{
 		if (!empty($input))
 		{
-			$input = str_replace('[-]', '&shy;', $input);
+			$input = str_replace(array('[-]','[ ]'), array('&shy;','&nbsp;'), $input);
 		}
 		return $input;
 	}
