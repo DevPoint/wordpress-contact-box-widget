@@ -195,13 +195,15 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function widget($args, $instance) 
 	{
+		$phone = $instance['phone'];
+		$email = $instance['email'];
 		$instance['title'] = $this->_apply_text_filters(apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title']));
-		$instance['phone'] = $this->_apply_phone_filters(apply_filters($this->get_widget_slug() . '_phone', $instance['phone'], $args, $instance));
-		$instance['phone_link'] = $this->_apply_phone_link_filters(apply_filters($this->get_widget_slug() . '_phone_link', $instance['phone'], $args, $instance));
-		$instance['email'] = apply_filters($this->get_widget_slug() . '_email', $instance['email'], $args, $instance);
-		$instance['email_link'] = apply_filters($this->get_widget_slug() . '_email_link', $instance['email'], $args, $instance);
+		$instance['phone'] = $this->_apply_phone_filters(apply_filters($this->get_widget_slug() . '_phone', $phone, $args, $instance));
+		$instance['phone_link'] = $this->_apply_phone_link_filters(apply_filters($this->get_widget_slug() . '_phone_link', $phone, $args, $instance));
+		$instance['email'] = apply_filters($this->get_widget_slug() . '_email', $email, $args, $instance);
+		$instance['email_link'] = apply_filters($this->get_widget_slug() . '_email_link', $email, $args, $instance);
 		$instance['facebook'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_facebook', $instance['facebook'], $args, $instance));
-		$instance['facebook_link'] = apply_filters($this->get_widget_slug() . '_facebook_link', $instance['_facebook_link'], $args, $instance);
+		$instance['facebook_link'] = apply_filters($this->get_widget_slug() . '_facebook_link', $instance['facebook_link'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
@@ -652,7 +654,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	{
 		if (!empty($input))
 		{
-			$input = str_replace(array('(0)','/','-',' ','[-]','[ ]'), '', $input);
+			$input = str_replace(array('[-]','[ ]','(0)','/','-',' '), '', $input);
 		}
 		return $input;
 	}

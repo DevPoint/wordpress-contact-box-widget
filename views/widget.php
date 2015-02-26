@@ -41,7 +41,7 @@ if (!defined('ABSPATH')) die('-1');
 	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
 	<span class="facebook-label"><?php _ex('Facebook:', 'long', $this->get_widget_text_domain());?></span>
 	<?php endif;?>
-	<a class="facebook-value" href="<?php $this->the_facebook_link($instance);?>"><?php $this->the_facebook($instance);?></a>
+	<a class="facebook-value" href="<?php $this->the_facebook_link($instance);?>" target="_blank"><?php $this->the_facebook($instance);?></a>
 </p>
 <?php endif; ?>
 
