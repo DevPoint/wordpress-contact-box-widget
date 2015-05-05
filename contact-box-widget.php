@@ -14,7 +14,7 @@
  * Plugin Name:       Contact Box Widget
  * Plugin URI:        http://wordpress.org/extend/plugins/post-teaser-widget
  * Description:       An advanced posts display widget with many options: get posts by post type and taxonomy & term or by post ID; sorting & ordering; feature images; custom templates and more.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            willriderat
  * Author URI:        http://devpoint.at
  * Text Domain:       contact-box-widget
@@ -68,7 +68,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
      *
      * @var      string
      */
-    protected $plugin_version = '1.1.0';
+    protected $plugin_version = '1.2.0';
 
     /**
      * Unique identifier for your widget.
@@ -97,7 +97,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
     /**
      * Map with features the widget should make use of
      *
-     * @since    1.1.0
+     * @since    1.2.0
      *
      * @var      array
      */
@@ -204,6 +204,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['email_link'] = apply_filters($this->get_widget_slug() . '_email_link', $email, $args, $instance);
 		$instance['facebook'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_facebook', $instance['facebook'], $args, $instance));
 		$instance['facebook_link'] = apply_filters($this->get_widget_slug() . '_facebook_link', $instance['facebook_link'], $args, $instance);
+		$instance['youtube'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_youtube', $instance['youtube'], $args, $instance));
+		$instance['youtube_link'] = apply_filters($this->get_widget_slug() . '_youtube_link', $instance['youtube_link'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
@@ -226,7 +228,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['email'] = strip_tags($new_instance['email']);
 		$instance['facebook'] = strip_tags($new_instance['facebook']);
 		$instance['facebook_link'] = strip_tags($new_instance['facebook_link']);
+		$instance['youtube'] = strip_tags($new_instance['youtube']);
+		$instance['youtube_link'] = strip_tags($new_instance['youtube_link']);
 		$instance['label_length'] = strip_tags($new_instance['label_length']);
+		$instance['template'] = strip_tags($new_instance['template']);
         return $instance;
     }
 
@@ -294,6 +299,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'email' => '',
 			'facebook' => '',
 			'facebook_link' => '',
+			'youtube' => '',
+			'youtube_link' => '',
 			'label_length' => '',
 			'template' => 'default'
 		);
@@ -307,7 +314,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/**
 	 * Should a certain feature being used
 	 *
-     * @since  1.1.0
+     * @since  1.2.0
      *
      * @param  array $instance 
 	 * @return bool
@@ -390,7 +397,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/**
 	 * Should widget phone being used
 	 *
-     * @since  1.1.0
+     * @since  1.2.0
      *
      * @param  array $instance 
 	 * @return bool
@@ -429,7 +436,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/**
 	 * Should widget email being used
 	 *
-     * @since  1.1.0
+     * @since  1.2.0
      *
      * @param  array $instance 
 	 * @return bool
@@ -506,6 +513,46 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Should widget youtube being used
+	 *
+     * @since  1.2.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_youtube(&$instance)
+	{
+		//return (!empty($this->feature_map['youtube']) && !empty($instance['youtube']));
+		return true;
+	}
+
+	/**
+	 * Print widget youtube
+	 *
+     * @since  1.2.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_youtube(&$instance)
+	{
+		echo $instance['youtube'];
+	}
+
+	/**
+	 * Print widget youtube link
+	 *
+     * @since  1.2.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_youtube_link(&$instance)
+	{
+		echo $instance['youtube_link'];
+	}
+
+	/**
 	 * Compare with widget thumbnail template
 	 *
      * @since  1.0.0
@@ -549,7 +596,8 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$this->feature_map = apply_filters($this->get_widget_slug() . '_feature_map', array(
 			'phone' => true,
 			'email' => true,
-			'facebook' => true)
+			'facebook' => true,
+			'youtube' => true)
 		);
 	}
 
@@ -628,7 +676,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/**
      * Apply internal phone filters
      *
-     * @since  1.1.0
+     * @since  1.2.0
      *
      * @param string
      * @return string
@@ -645,7 +693,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	/**
      * Apply internal phone link filters
      *
-     * @since  1.1.0
+     * @since  1.2.0
      *
      * @param string
      * @return string

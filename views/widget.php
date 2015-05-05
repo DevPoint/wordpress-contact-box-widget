@@ -44,5 +44,15 @@ if (!defined('ABSPATH')) die('-1');
 	<a class="facebook-value" href="<?php $this->the_facebook_link($instance);?>" target="_blank"><?php $this->the_facebook($instance);?></a>
 </p>
 <?php endif; ?>
+<?php if ($this->has_youtube($instance)) : ?>
+<p class="youtube">
+	<?php if ($this->is_label_length($instance, 'short')) :?>
+	<span class="youtube-label"><?php _ex('Youtube:', 'short', $this->get_widget_text_domain());?></span>
+	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
+	<span class="youtube-label"><?php _ex('Youtube:', 'long', $this->get_widget_text_domain());?></span>
+	<?php endif;?>
+	<a class="youtube-value" href="<?php $this->the_youtube_link($instance);?>" target="_blank"><?php $this->the_youtube($instance);?></a>
+</p>
+<?php endif; ?>
 
 <?php echo $args['after_widget']; ?>

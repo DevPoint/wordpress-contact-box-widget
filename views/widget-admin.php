@@ -34,6 +34,16 @@ if ( !defined( 'ABSPATH' ) )
 	<input class="widefat" id="<?php echo $this->get_field_id('facebook_link');?>" name="<?php echo $this->get_field_name('facebook_link');?>" type="text" value="<?php echo $instance['facebook_link'];?>" />
 </p>
 <?php endif; ?>
+<?php if ($this->has_feature('youtube')) : ?>
+<p>
+	<label for="<?php echo $this->get_field_id('youtube');?>"><?php _e('Youtube link text:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('youtube');?>" name="<?php echo $this->get_field_name('youtube');?>" type="text" value="<?php echo $instance['youtube'];?>" />
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('youtube_link');?>"><?php _e('Youtube URL:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('youtube_link');?>" name="<?php echo $this->get_field_name('youtube_link');?>" type="text" value="<?php echo $instance['youtube_link'];?>" />
+</p>
+<?php endif; ?>
 <p>
 	<label for="<?php echo $this->get_field_id('label_length');?>"><?php _e('Label display length:', $this->get_widget_text_domain()); ?></label> 
 	<select class="widefat" id="<?php echo $this->get_field_id('label_length');?>" name="<?php echo $this->get_field_name('label_length');?>">

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Enquiry Box Widget 1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/enquiry-box-widget\n"
-"POT-Creation-Date: 2015-02-26 10:49+0100\n"
-"PO-Revision-Date: 2015-02-26 10:52+0100\n"
+"POT-Creation-Date: 2015-05-05 08:27+0100\n"
+"PO-Revision-Date: 2015-05-05 08:27+0100\n"
 "Last-Translator: Wilfried Reiter <wilfried.reiter@devpoint.at>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -39,15 +39,23 @@ msgstr "Facebook  - Text für Verlinkung:"
 msgid "Facebook URL:"
 msgstr "Facebook URL:"
 
-#: views/widget-admin.php:38
+#: views/widget-admin.php:39
+msgid "Youtube link text:"
+msgstr "Youtube - Text für Verlinkung:"
+
+#: views/widget-admin.php:43
+msgid "Youtube URL:"
+msgstr "Youtube URL:"
+
+#: views/widget-admin.php:48
 msgid "Label display length:"
 msgstr "Darstellung der Bezeichner:"
 
-#: views/widget-admin.php:49
+#: views/widget-admin.php:59
 msgid "Template:"
 msgstr "Template:"
 
-#: views/widget-admin.php:52
+#: views/widget-admin.php:62
 msgid "default"
 msgstr "default"
 
@@ -81,6 +89,16 @@ msgctxt "long"
 msgid "Facebook:"
 msgstr "Facebook:"
 
+#: views/widget.php:50
+msgctxt "short"
+msgid "Youtube:"
+msgstr "Youtube:"
+
+#: views/widget.php:52
+msgctxt "long"
+msgid "Youtube:"
+msgstr "Youtube:"
+
 #: contact-box-widget.php:125
 msgid "Contact Box"
 msgstr "Kontakt Box"
@@ -89,15 +107,15 @@ msgstr "Kontakt Box"
 msgid "Contact box with Phone number and Email."
 msgstr "Kontakt Box mit Telefonnummer und Email."
 
-#: contact-box-widget.php:381
+#: contact-box-widget.php:390
 msgid "short"
 msgstr "kurz"
 
-#: contact-box-widget.php:382
+#: contact-box-widget.php:391
 msgid "long"
 msgstr "lang"
 
-#: contact-box-widget.php:383
+#: contact-box-widget.php:392
 msgid "none"
 msgstr "ohne"
 
