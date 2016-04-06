@@ -208,8 +208,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['youtube_link'] = apply_filters($this->get_widget_slug() . '_youtube_link', $instance['youtube_link'], $args, $instance);
 		$instance['custom_01'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_custom_01', $instance['custom_01'], $args, $instance));
 		$instance['custom_01_link'] = apply_filters($this->get_widget_slug() . '_custom_01_link', $instance['custom_01_link'], $args, $instance);
+		$instance['custom_01_new_window'] = apply_filters($this->get_widget_slug() . '_custom_01_new_window', $instance['custom_01_new_window'], $args, $instance);
 		$instance['custom_02'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_custom_02', $instance['custom_02'], $args, $instance));
 		$instance['custom_02_link'] = apply_filters($this->get_widget_slug() . '_custom_02_link', $instance['custom_02_link'], $args, $instance);
+		$instance['custom_02_new_window'] = apply_filters($this->get_widget_slug() . '_custom_02_new_window', $instance['custom_02_new_window'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
@@ -236,8 +238,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['youtube_link'] = strip_tags($new_instance['youtube_link']);
 		$instance['custom_01'] = strip_tags($new_instance['custom_01']);
 		$instance['custom_01_link'] = strip_tags($new_instance['custom_01_link']);
+		$instance['custom_01_new_window'] = strip_tags($new_instance['custom_01_new_window']);
 		$instance['custom_02'] = strip_tags($new_instance['custom_02']);
 		$instance['custom_02_link'] = strip_tags($new_instance['custom_02_link']);
+		$instance['custom_02_new_window'] = strip_tags($new_instance['custom_02_new_window']);
 		$instance['label_length'] = strip_tags($new_instance['label_length']);
 		$instance['template'] = strip_tags($new_instance['template']);
         return $instance;
@@ -311,8 +315,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'youtube_link' => '',
 			'custom_01' => '',
 			'custom_01_link' => '',
+			'custom_01_new_window' => '',
 			'custom_02' => '',
 			'custom_02_link' => '',
+			'custom_02_new_window' => '',
 			'label_length' => '',
 			'template' => 'default'
 		);
@@ -540,8 +546,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function has_facebook(&$instance)
 	{
-		//return (!empty($this->feature_map['facebook']) && !empty($instance['facebook']));
-		return true;
+		return (!empty($this->feature_map['facebook']) && !empty($instance['facebook']));
 	}
 
 	/**
@@ -603,8 +608,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	 */
 	public function has_youtube(&$instance)
 	{
-		//return (!empty($this->feature_map['youtube']) && !empty($instance['youtube']));
-		return true;
+		return (!empty($this->feature_map['youtube']) && !empty($instance['youtube']));
 	}
 
 	/**
@@ -696,6 +700,19 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Print widget custom link #01 target
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_01_target(&$instance)
+	{
+		echo (!empty($instance['custom_01_new_window'])) ? '_blank' : '_top';
+	}
+
+	/**
 	 * Print widget custom #01 label
 	 *
      * @since  1.3.0
@@ -755,6 +772,19 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function the_custom_02_link(&$instance)
 	{
 		echo $instance['custom_02_link'];
+	}
+
+	/**
+	 * Print widget custom link #02 target
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_02_target(&$instance)
+	{
+		echo (!empty($instance['custom_02_new_window'])) ? '_blank' : '_top';
 	}
 
 	/**

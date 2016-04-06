@@ -51,7 +51,7 @@ if (!defined('ABSPATH')) die('-1');
 	<?php if ($this->has_label($instance)) :?>
 	<span class="custom_01-label"><?php $this->the_custom_01_label($instance);?></span>
 	<?php endif;?>
-	<a class="custom_01-value" href="<?php $this->the_custom_01_link($instance);?>" target="_blank"><?php $this->the_custom_01($instance);?></a>
+	<a class="custom_01-value" href="<?php $this->the_custom_01_link($instance);?>" target="<?php $this->the_custom_01_target($instance);?>"><?php $this->the_custom_01($instance);?></a>
 </p>
 <?php endif; ?>
 <?php if ($this->has_custom_02($instance)) : ?>
@@ -59,7 +59,7 @@ if (!defined('ABSPATH')) die('-1');
 	<?php if ($this->has_label($instance)) :?>
 	<span class="custom_02-label"><?php $this->the_custom_02_label($instance);?></span>
 	<?php endif;?>
-	<a class="custom_02-value" href="<?php $this->the_custom_02_link($instance);?>" target="_blank"><?php $this->the_custom_02($instance);?></a>
+	<a class="custom_02-value" href="<?php $this->the_custom_02_link($instance);?>" target="<?php $this->the_custom_02_target($instance);?>"><?php $this->the_custom_02($instance);?></a>
 </p>
 <?php endif; ?>
 

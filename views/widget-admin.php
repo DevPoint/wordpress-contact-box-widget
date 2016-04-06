@@ -52,6 +52,10 @@ if ( !defined( 'ABSPATH' ) )
 <p>
 	<label for="<?php echo $this->get_field_id('custom_01_link');?>"><?php _e('Custom #01 URL:', $this->get_widget_text_domain()); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id('custom_01_link');?>" name="<?php echo $this->get_field_name('custom_01_link');?>" type="text" value="<?php echo $instance['custom_01_link'];?>" />
+	<label>
+		<input name="<?php echo $this->get_field_name('custom_01_new_window');?>" type="checkbox" value="<?php echo $instance['custom_01_new_window'];?>" />
+		<?php _e('Open in new window?', $this->get_widget_text_domain()); ?>
+	</label> 
 </p>
 <?php endif; ?>
 <?php if ($this->has_feature('custom_02')) : ?>
@@ -62,6 +66,10 @@ if ( !defined( 'ABSPATH' ) )
 <p>
 	<label for="<?php echo $this->get_field_id('custom_02_link');?>"><?php _e('Custom #02 URL:', $this->get_widget_text_domain()); ?></label> 
 	<input class="widefat" id="<?php echo $this->get_field_id('custom_02_link');?>" name="<?php echo $this->get_field_name('custom_02_link');?>" type="text" value="<?php echo $instance['custom_02_link'];?>" />
+	<label>
+		<input name="<?php echo $this->get_field_name('custom_02_new_window');?>" type="checkbox" value="<?php echo $instance['custom_02_new_window'];?>" />
+		<?php _e('Open in new window?', $this->get_widget_text_domain()); ?>
+	</label> 
 </p>
 <?php endif; ?>
 <p>
