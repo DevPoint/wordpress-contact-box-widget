@@ -16,42 +16,50 @@ if (!defined('ABSPATH')) die('-1');
 <?php endif; ?>
 <?php if ($this->has_phone($instance)) : ?>
 <p class="phone">
-	<?php if ($this->is_label_length($instance, 'short')) :?>
-	<span class="phone-label"><?php _ex('Phone:', 'short', $this->get_widget_text_domain());?></span>
-	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
-	<span class="phone-label"><?php _ex('Phone:', 'long', $this->get_widget_text_domain());?></span>
+	<?php if ($this->has_label($instance)) :?>
+	<span class="phone-label"><?php $this->the_phone_label($instance);?></span>
 	<?php endif;?>
 	<a class="phone-value" href="tel:<?php $this->the_phone_link($instance);?>"><?php $this->the_phone($instance);?></a>
 </p>
 <?php endif; ?>
 <?php if ($this->has_email($instance)) : ?>
 <p class="email">
-	<?php if ($this->is_label_length($instance, 'short')) :?>
-	<span class="email-label"><?php _ex('Email:', 'short', $this->get_widget_text_domain());?></span>
-	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
-	<span class="email-label"><?php _ex('Email:', 'long', $this->get_widget_text_domain());?></span>
+	<?php if ($this->has_label($instance)) :?>
+	<span class="email-label"><?php $this->the_email_label($instance);?></span>
 	<?php endif;?>
 	<a class="email-value" href="mailto:<?php $this->the_email_link($instance);?>"><?php $this->the_email($instance);?></a>
 </p>
 <?php endif; ?>
 <?php if ($this->has_facebook($instance)) : ?>
 <p class="facebook">
-	<?php if ($this->is_label_length($instance, 'short')) :?>
-	<span class="facebook-label"><?php _ex('Facebook:', 'short', $this->get_widget_text_domain());?></span>
-	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
-	<span class="facebook-label"><?php _ex('Facebook:', 'long', $this->get_widget_text_domain());?></span>
+	<?php if ($this->has_label($instance)) :?>
+	<span class="facebook-label"><?php $this->the_facebook_label($instance);?></span>
 	<?php endif;?>
 	<a class="facebook-value" href="<?php $this->the_facebook_link($instance);?>" target="_blank"><?php $this->the_facebook($instance);?></a>
 </p>
 <?php endif; ?>
 <?php if ($this->has_youtube($instance)) : ?>
 <p class="youtube">
-	<?php if ($this->is_label_length($instance, 'short')) :?>
-	<span class="youtube-label"><?php _ex('Youtube:', 'short', $this->get_widget_text_domain());?></span>
-	<?php elseif ($this->is_label_length($instance, 'long')) : ?>
-	<span class="youtube-label"><?php _ex('Youtube:', 'long', $this->get_widget_text_domain());?></span>
+	<?php if ($this->has_label($instance)) :?>
+	<span class="youtube-label"><?php $this->the_youtube_label($instance);?></span>
 	<?php endif;?>
 	<a class="youtube-value" href="<?php $this->the_youtube_link($instance);?>" target="_blank"><?php $this->the_youtube($instance);?></a>
+</p>
+<?php endif; ?>
+<?php if ($this->has_custom_01($instance)) : ?>
+<p class="custom_01">
+	<?php if ($this->has_label($instance)) :?>
+	<span class="custom_01-label"><?php $this->the_custom_01_label($instance);?></span>
+	<?php endif;?>
+	<a class="custom_01-value" href="<?php $this->the_custom_01_link($instance);?>" target="_blank"><?php $this->the_custom_01($instance);?></a>
+</p>
+<?php endif; ?>
+<?php if ($this->has_custom_02($instance)) : ?>
+<p class="custom_02">
+	<?php if ($this->has_label($instance)) :?>
+	<span class="custom_02-label"><?php $this->the_custom_02_label($instance);?></span>
+	<?php endif;?>
+	<a class="custom_02-value" href="<?php $this->the_custom_02_link($instance);?>" target="_blank"><?php $this->the_custom_02($instance);?></a>
 </p>
 <?php endif; ?>
 

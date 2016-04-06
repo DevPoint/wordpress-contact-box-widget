@@ -44,6 +44,26 @@ if ( !defined( 'ABSPATH' ) )
 	<input class="widefat" id="<?php echo $this->get_field_id('youtube_link');?>" name="<?php echo $this->get_field_name('youtube_link');?>" type="text" value="<?php echo $instance['youtube_link'];?>" />
 </p>
 <?php endif; ?>
+<?php if ($this->has_feature('custom_01')) : ?>
+<p>
+	<label for="<?php echo $this->get_field_id('custom_01');?>"><?php _e('Custom #01 link text:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('custom_01');?>" name="<?php echo $this->get_field_name('custom_01');?>" type="text" value="<?php echo $instance['custom_01'];?>" />
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('custom_01_link');?>"><?php _e('Custom #01 URL:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('custom_01_link');?>" name="<?php echo $this->get_field_name('custom_01_link');?>" type="text" value="<?php echo $instance['custom_01_link'];?>" />
+</p>
+<?php endif; ?>
+<?php if ($this->has_feature('custom_02')) : ?>
+<p>
+	<label for="<?php echo $this->get_field_id('custom_02');?>"><?php _e('Custom #02 link text:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('custom_02');?>" name="<?php echo $this->get_field_name('custom_02');?>" type="text" value="<?php echo $instance['custom_02'];?>" />
+</p>
+<p>
+	<label for="<?php echo $this->get_field_id('custom_02_link');?>"><?php _e('Custom #02 URL:', $this->get_widget_text_domain()); ?></label> 
+	<input class="widefat" id="<?php echo $this->get_field_id('custom_02_link');?>" name="<?php echo $this->get_field_name('custom_02_link');?>" type="text" value="<?php echo $instance['custom_02_link'];?>" />
+</p>
+<?php endif; ?>
 <p>
 	<label for="<?php echo $this->get_field_id('label_length');?>"><?php _e('Label display length:', $this->get_widget_text_domain()); ?></label> 
 	<select class="widefat" id="<?php echo $this->get_field_id('label_length');?>" name="<?php echo $this->get_field_name('label_length');?>">

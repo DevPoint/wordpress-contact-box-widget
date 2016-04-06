@@ -8,13 +8,13 @@
  * @author    Wilfried Reiter <wilfried.reiter@devpoint.at>
  * @license   GPL-2.0+
  * @link      http://wordpress.org/extend/plugins/post-teaser-widget
- * @copyright 2015 Wilfried Reiter
+ * @copyright 2015-2016 Wilfried Reiter
  *
  * @post-teaser-widget
  * Plugin Name:       Contact Box Widget
  * Plugin URI:        http://wordpress.org/extend/plugins/post-teaser-widget
  * Description:       An advanced posts display widget with many options: get posts by post type and taxonomy & term or by post ID; sorting & ordering; feature images; custom templates and more.
- * Version:           1.2.0
+ * Version:           1.3.0
  * Author:            willriderat
  * Author URI:        http://devpoint.at
  * Text Domain:       contact-box-widget
@@ -25,7 +25,7 @@
  */
 
 /**
- * Copyright 2015  Wilfried Reiter (email: wilfried.reiter@devpoint.at)
+ * Copyright 2015-2016 Wilfried Reiter (email: wilfried.reiter@devpoint.at)
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as 
@@ -68,7 +68,7 @@ class DPT_Contact_Box_Widget extends WP_Widget {
      *
      * @var      string
      */
-    protected $plugin_version = '1.2.0';
+    protected $plugin_version = '1.3.0';
 
     /**
      * Unique identifier for your widget.
@@ -206,6 +206,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['facebook_link'] = apply_filters($this->get_widget_slug() . '_facebook_link', $instance['facebook_link'], $args, $instance);
 		$instance['youtube'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_youtube', $instance['youtube'], $args, $instance));
 		$instance['youtube_link'] = apply_filters($this->get_widget_slug() . '_youtube_link', $instance['youtube_link'], $args, $instance);
+		$instance['custom_01'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_custom_01', $instance['custom_01'], $args, $instance));
+		$instance['custom_01_link'] = apply_filters($this->get_widget_slug() . '_custom_01_link', $instance['custom_01_link'], $args, $instance);
+		$instance['custom_02'] = $this->_apply_text_filters(apply_filters($this->get_widget_slug() . '_custom_02', $instance['custom_02'], $args, $instance));
+		$instance['custom_02_link'] = apply_filters($this->get_widget_slug() . '_custom_02_link', $instance['custom_02_link'], $args, $instance);
 		$instance['label_length'] = apply_filters($this->get_widget_slug() . '_label_length', $instance['label_length'], $args, $instance);
 		include ($this->get_template('widget', $instance['template']));
     }
@@ -230,6 +234,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 		$instance['facebook_link'] = strip_tags($new_instance['facebook_link']);
 		$instance['youtube'] = strip_tags($new_instance['youtube']);
 		$instance['youtube_link'] = strip_tags($new_instance['youtube_link']);
+		$instance['custom_01'] = strip_tags($new_instance['custom_01']);
+		$instance['custom_01_link'] = strip_tags($new_instance['custom_01_link']);
+		$instance['custom_02'] = strip_tags($new_instance['custom_02']);
+		$instance['custom_02_link'] = strip_tags($new_instance['custom_02_link']);
 		$instance['label_length'] = strip_tags($new_instance['label_length']);
 		$instance['template'] = strip_tags($new_instance['template']);
         return $instance;
@@ -301,6 +309,10 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'facebook_link' => '',
 			'youtube' => '',
 			'youtube_link' => '',
+			'custom_01' => '',
+			'custom_01_link' => '',
+			'custom_02' => '',
+			'custom_02_link' => '',
 			'label_length' => '',
 			'template' => 'default'
 		);
@@ -434,6 +446,29 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Print widget phone label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_phone_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Phone:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Phone:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_phone_label', $label_text, $instance['label_length']);
+	}
+
+	/**
 	 * Should widget email being used
 	 *
      * @since  1.2.0
@@ -470,6 +505,29 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function the_email_link(&$instance)
 	{
 		echo $instance['email_link'];
+	}
+
+	/**
+	 * Print widget email label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_email_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Email:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Email:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_email_label', $label_text, $instance['label_length']);
 	}
 
 	/**
@@ -513,6 +571,29 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Print widget facebook label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_facebook_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Facebook:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Facebook:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_facebook_label', $label_text, $instance['label_length']);
+	}
+
+	/**
 	 * Should widget youtube being used
 	 *
      * @since  1.2.0
@@ -550,6 +631,153 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 	public function the_youtube_link(&$instance)
 	{
 		echo $instance['youtube_link'];
+	}
+
+	/**
+	 * Print widget youtube label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_youtube_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Youtube:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Youtube:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_youtube_label', $label_text, $instance['label_length']);
+	}
+
+	/**
+	 * Should widget custom #01 being used
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_custom_01(&$instance)
+	{
+		return (!empty($this->feature_map['custom_01']) && !empty($instance['custom_01']));
+	}
+
+	/**
+	 * Print widget custom #01 text
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_01(&$instance)
+	{
+		echo $instance['custom_01'];
+	}
+
+	/**
+	 * Print widget custom link #01
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_01_link(&$instance)
+	{
+		echo $instance['custom_01_link'];
+	}
+
+	/**
+	 * Print widget custom #01 label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_01_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Custom 01:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Custom 01:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_custom_01_label', $label_text, $instance['label_length']);
+	}
+
+	/**
+	 * Should widget custom #02 being used
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return bool
+	 */
+	public function has_custom_02(&$instance)
+	{
+		return (!empty($this->feature_map['custom_02']) && !empty($instance['custom_02']));
+	}
+
+	/**
+	 * Print widget custom #02 text
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_02(&$instance)
+	{
+		echo $instance['custom_02'];
+	}
+
+	/**
+	 * Print widget custom link #02
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_02_link(&$instance)
+	{
+		echo $instance['custom_02_link'];
+	}
+
+	/**
+	 * Print widget custom #02 label
+	 *
+     * @since  1.3.0
+     *
+     * @param  array $instance 
+	 * @return void
+	 */
+	public function the_custom_02_label(&$instance)
+	{
+		$label_text = '';
+		switch ($instance['label_length']) 
+		{
+			case 'short':
+				$label_text = _x('Custom 02:', 'short', $this->get_widget_text_domain());
+				break;
+			case 'long':
+				$label_text = _x('Custom 02:', 'long', $this->get_widget_text_domain());
+				break;
+		}
+		echo apply_filters($this->get_widget_slug() . '_custom_02_label', $label_text, $instance['label_length']);
 	}
 
 	/**
@@ -597,7 +825,9 @@ class DPT_Contact_Box_Widget extends WP_Widget {
 			'phone' => true,
 			'email' => true,
 			'facebook' => true,
-			'youtube' => true)
+			'youtube' => true,
+			'custom_01' => false,
+			'custom_02' => false)
 		);
 	}
 
